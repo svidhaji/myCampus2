@@ -20,7 +20,7 @@ before_install:
   - yes | sdkmanager "platforms;android-29"
 
 script:
-  - ./gradlew assembleDebug
+  - echo "Hello World"
 
 deploy:
   provider: releases
