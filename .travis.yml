@@ -1,15 +1,19 @@
 language: android
 jdk: oraclejdk8
-
+env:
+  global:
+    - ANDROID_API_LEVEL=29
+    - ANDROID_BUILD_TOOLS_VERSION=29.0.3
 android:
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
   components:
     - platform-tools
     - tools
-
     - build-tools-29.0.3
-
     - android-29
-
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
@@ -21,9 +25,3 @@ before_install:
 
 script:
   - echo "Hello World"
-
-deploy:
-  provider: releases
-  api-key: $GITHUB_API_KEY
-  on:
-    master: true
