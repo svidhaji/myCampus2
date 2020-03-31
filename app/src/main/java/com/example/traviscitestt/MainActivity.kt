@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.btn)
         var pressed = false
 
+        //Callback hook, new build with every push
+
         button.setOnClickListener(View.OnClickListener {
             if (!pressed) {
                 text.text = "Hello world"
