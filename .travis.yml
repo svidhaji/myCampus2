@@ -24,4 +24,5 @@ before_install:
   - yes | sdkmanager "platforms;android-29"
 
 script:
-  - echo "Hello World"
+  - ./gradlew assembleDebug
+  - ls -lha build/outputs/apk/debug

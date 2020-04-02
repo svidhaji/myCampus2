@@ -1,7 +1,2 @@
-<<<<<<< HEAD
 rootProject.name='myCampusNokia'
 include ':app'
-=======
-rootProject.name='TravisCitestt'
-include ':app'
->>>>>>> 925a6cd9e01e3af23b74af79d33879fc90d4c137
