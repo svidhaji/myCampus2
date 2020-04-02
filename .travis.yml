@@ -27,5 +27,7 @@ before_install:
 script:
   - ./gradlew assembleDebug
   - pwd
-  - ls -lha
+  - ls -lha build
+  - ls -lha build/outputs
+  - ls -lha build/outputs/apk
   - ls -lha build/outputs/apk/debug
