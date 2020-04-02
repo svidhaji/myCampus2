@@ -23,6 +23,7 @@ android:
 before_install:
   - yes | sdkmanager "platforms;android-29"
   - chmod 755 gradlew
+  - ./gradlew dependencies || true
 
 script:
   - ./gradlew assembleDebug --info
