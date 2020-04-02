@@ -1,4 +1,4 @@
-package com.example.uitest.ui.notifications
+package com.example.uitest.ui.restaurant
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.uitest.R
 
-class NotificationsFragment : Fragment() {
+class RestaurantFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var restaurantViewModel: RestaurantViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        restaurantViewModel =
+                ViewModelProviders.of(this).get(RestaurantViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_restaurant, container, false)
+        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        restaurantViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

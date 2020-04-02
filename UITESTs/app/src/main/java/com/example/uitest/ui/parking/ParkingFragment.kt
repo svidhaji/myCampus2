@@ -1,4 +1,4 @@
-package com.example.uitest.ui.dashboard
+package com.example.uitest.ui.parking
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.uitest.R
 
-class DashboardFragment : Fragment() {
+class ParkingFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var parkingViewModel: ParkingViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        parkingViewModel =
+                ViewModelProviders.of(this).get(ParkingViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_parking, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        parkingViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
