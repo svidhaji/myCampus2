@@ -26,7 +26,7 @@ before_install:
   - ./gradlew dependencies || true
 
 script:
-  - ./gradlew assembleDebug --info
+  - ./gradlew assembleRelease --info
   - pwd
   - ls -lha build
   - ls -lha build/outputs
