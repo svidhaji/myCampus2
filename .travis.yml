@@ -25,7 +25,7 @@ before_install:
   - chmod 755 gradlew
 
 script:
-  - ./gradlew assembleDebug
+  - ./gradlew clean build assembleDebug
   - pwd
   - ls -lha build
   - ls -lha build/outputs
