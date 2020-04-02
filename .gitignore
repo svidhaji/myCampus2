@@ -13,4 +13,6 @@
 /captures
 .externalNativeBuild
 .cxx
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
 
