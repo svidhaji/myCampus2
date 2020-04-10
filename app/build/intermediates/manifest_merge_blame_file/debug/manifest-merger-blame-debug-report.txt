@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.traviscitestt"
+3    package="com.example.mycampusnokia"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -15,7 +15,7 @@
 12        android:allowBackup="true"
 12-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.0.2] C:\Users\saidi\.gradle\caches\transforms-2\files-2.1\b50ccf143a3551ea5c553ecdad26abd9\core-1.0.2\AndroidManifest.xml:22:18-86
+13-->[androidx.core:core:1.2.0] C:\Users\saidi\.gradle\caches\transforms-2\files-2.1\4b9870924e6a59106ae571b6074fa673\core-1.2.0\AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
 15        android:icon="@mipmap/ic_launcher"
 15-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:7:9-43
@@ -25,22 +25,23 @@
 17-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:9:9-54
 18        android:supportsRtl="true"
 18-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:10:9-35
-19        android:theme="@style/AppTheme" >
-19-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:11:9-40
-20        <activity android:name="com.example.mycampusnokia.MainActivity" >
-20-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:12:9-18:20
-20-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:12:19-72
-21            <intent-filter>
-21-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:13:13-17:29
-22                <action android:name="android.intent.action.MAIN" />
-22-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:14:17-69
-22-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:14:25-66
-23
-24                <category android:name="android.intent.category.LAUNCHER" />
-24-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:16:17-77
-24-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:16:27-74
-25            </intent-filter>
-26        </activity>
-27    </application>
-28
-29</manifest>
+19        android:testOnly="true"
+20        android:theme="@style/AppTheme" >
+20-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:11:9-40
+21        <activity android:name="com.example.mycampusnokia.MainActivity" >
+21-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:12:9-18:20
+21-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:12:19-72
+22            <intent-filter>
+22-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:13:13-17:29
+23                <action android:name="android.intent.action.MAIN" />
+23-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:14:17-69
+23-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:14:25-66
+24
+25                <category android:name="android.intent.category.LAUNCHER" />
+25-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:16:17-77
+25-->C:\MobileProject\myCampus2\app\src\main\AndroidManifest.xml:16:27-74
+26            </intent-filter>
+27        </activity>
+28    </application>
+29
+30</manifest>
