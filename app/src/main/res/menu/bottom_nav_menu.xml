@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_parking"
+        android:icon="@drawable/ic_local_parking_24px"
+        android:title="@string/title_parking" />
+
+    <item
+        android:id="@+id/navigation_restaurant"
+        android:icon="@drawable/restaurant_24px"
+        android:title="@string/title_restaurant" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/settings_24px"
+        android:title="@string/title_settings" />
+
+</menu>
