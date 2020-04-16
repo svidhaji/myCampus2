@@ -2,6 +2,7 @@ package com.example.testi
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
@@ -101,9 +102,17 @@ class MainActivity : AppCompatActivity() {
 
             } else if (it.itemId === R.id.navigation_settings) {
 
-
                 val textView: TextView? = findViewById(R.id.launchcount) as? TextView
                 textView?.text = "launchcount: " + loginCount!!.toString()
+
+                val logoutBtn: Button = findViewById(R.id.logoutbutton)
+                logoutBtn.setOnClickListener {
+                    println("clicked")
+                    val intent = Intent(applicationContext, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
+                }
             }
             return@setOnNavigationItemSelectedListener true
         }
