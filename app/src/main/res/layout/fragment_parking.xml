@@ -8,22 +8,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:layout_weight="1"
-        android:clipToPadding="true"
-        android:elevation="10dp"
         android:id="@+id/p10layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="@drawable/card_bg"
+        android:clipToPadding="true"
         android:orientation="vertical">
 
         <TextView
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="@string/parking_p10"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -35,26 +34,26 @@
             android:padding="10dp">
 
             <ProgressBar
-                android:progressBackgroundTint="@color/colorPrimaryDark"
                 android:id="@+id/p10progress"
-                android:rotation="90"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:progress="0"
                 android:background="@drawable/circlebackground"
+                android:progress="0"
+                android:progressBackgroundTint="@color/colorPrimaryDark"
                 android:progressDrawable="@drawable/circle"
-                android:textAlignment="center"/>
+                android:rotation="90"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/p10textprogress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text=""
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:layout_gravity="center"/>
+                android:textSize="20sp" />
 
         </FrameLayout>
 
@@ -68,7 +67,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/card_bg"
         android:clipToPadding="true"
-        android:elevation="10dp"
         android:orientation="vertical"
         >
 
@@ -122,7 +120,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/card_bg"
         android:clipToPadding="true"
-        android:elevation="10dp"
         android:orientation="vertical"
         >
 

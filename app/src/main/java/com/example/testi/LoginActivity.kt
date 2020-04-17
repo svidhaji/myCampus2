@@ -31,6 +31,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        supportActionBar?.hide()
+        actionBar?.hide()
+
         loginbutton.setOnClickListener {
 
             val email = emailfield.text.toString().trim()

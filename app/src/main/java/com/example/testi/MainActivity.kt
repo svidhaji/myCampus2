@@ -1,37 +1,24 @@
 package com.example.testi
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.testi.ui.parking.ParkingFragment
-import com.example.testi.ui.restaurant.RestaurantFragment
-import com.example.testi.ui.settings.SettingsFragment
-import kotlinx.android.synthetic.main.fragment_settings.*
-import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import org.json.JSONObject
-import java.util.concurrent.TimeUnit
+import java.net.URL
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class MainActivity : AppCompatActivity() {
@@ -94,11 +81,15 @@ class MainActivity : AppCompatActivity() {
 
             if (it.itemId === R.id.navigation_parking) {
 
+                fetchParkingData().execute(parkingURLP5)
+                fetchParkingData().execute(parkingURLP10)
+                fetchParkingData().execute(parkingURLP10TOP)
 
             } else if (it.itemId === R.id.navigation_restaurant) {
 
                 fetchRestaurantFillRate().execute(midpoint)
                 fetchRestaurantData().execute(restaurantURLS)
+
 
             } else if (it.itemId === R.id.navigation_settings) {
 
@@ -120,6 +111,7 @@ class MainActivity : AppCompatActivity() {
 
             if (it.itemId === R.id.navigation_parking) {
                 //Do stuff
+
                 fetchParkingData().execute(parkingURLP5)
                 fetchParkingData().execute(parkingURLP10)
                 fetchParkingData().execute(parkingURLP10TOP)
@@ -143,6 +135,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_parking, R.id.navigation_restaurant, R.id.navigation_settings
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -276,7 +269,7 @@ class MainActivity : AppCompatActivity() {
 
                            findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
                            findViewById<ProgressBar>(R.id.q3progress).setProgress(
-                               5,
+                               (timeq * 17),
                                true
                            )
                        }

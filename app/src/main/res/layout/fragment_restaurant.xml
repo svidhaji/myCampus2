@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:id="@+id/restaurantlayout"
         android:clipToPadding="true"
-        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/card_bg"
@@ -25,7 +24,9 @@
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:textSize="36sp"/>
+            android:textSize="30sp"
+            android:autoSizeMaxTextSize="40sp"
+            android:autoSizeMinTextSize="30sp"/>
 
 
         <FrameLayout
@@ -63,20 +64,24 @@
             android:padding="10dp">
 
             <TextView
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="12sp"
+                android:gravity="center"
                 android:text="Lenght per Que (minutes):"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/q1text"
                 android:layout_gravity="left"
                 android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -112,14 +117,18 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/q2text"
                 android:layout_gravity="left"
-                android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -148,6 +157,7 @@
                     />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q2percent"
                     android:layout_margin="2dp"
                     android:layout_gravity="center_vertical"
@@ -155,14 +165,17 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/q3text"
                 android:layout_gravity="left"
-                android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -191,6 +204,7 @@
                     />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q3percent"
                     android:layout_margin="2dp"
                     android:layout_gravity="center_vertical"
@@ -198,14 +212,17 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
             <TextView
-                android:id="@+id/q2text"
-                android:layout_gravity="left"
                 android:textSize="16sp"
+                android:id="@+id/q4text"
+                android:layout_gravity="left"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -233,6 +250,7 @@
                     />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q4percent"
                     android:layout_margin="2dp"
                     android:layout_gravity="center_vertical"
@@ -240,14 +258,17 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/q5text"
                 android:layout_gravity="left"
-                android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -275,6 +296,7 @@
                     />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q5percent"
                     android:layout_margin="2dp"
                     android:layout_gravity="center_vertical"
@@ -282,14 +304,17 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/q6text"
                 android:layout_gravity="left"
-                android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -316,6 +341,7 @@
                     android:progressTint="@color/white" />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q6percent"
                     android:layout_margin="2dp"
                     android:layout_gravity="center_vertical"
@@ -323,14 +349,17 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/q7text"
                 android:layout_gravity="left"
-                android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -358,6 +387,7 @@
                     />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q7percent"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
@@ -366,13 +396,16 @@
                     android:padding="2dp"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"/>
             </LinearLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/q8text"
                 android:layout_gravity="left"
-                android:textSize="16sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="2sp"
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:layout_width="wrap_content"
@@ -400,6 +433,7 @@
                     />
 
                 <TextView
+                    android:textSize="16sp"
                     android:id="@+id/q8percent"
                     android:layout_margin="2dp"
                     android:layout_gravity="center_vertical"
@@ -407,7 +441,8 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="20sp"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="2sp"
                     android:padding="2dp"/>
             </LinearLayout>
 
