@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
                     val textView: TextView? = findViewById(R.id.launchcount) as? TextView
                     textView?.text = "launchcount: " + loginCount!!.toString()
 
-                    val logoutbtn: Button = findViewById<Button>(R.id.logoutbutton)
+                    val logoutbtn: Button = findViewById(R.id.logoutbutton)
                     logoutbtn.setOnClickListener {
 
                         val intent = Intent(this, LoginActivity::class.java)
