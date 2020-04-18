@@ -70,8 +70,7 @@ class LoginActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             println(response.body()?.token)
 
-                            MyPreferences.getInstance(applicationContext)
-                                .saveJwt(response.body()?.token!!)
+                            MyPreferences.getInstance(applicationContext).saveJwt(response.body()?.token!!)
 
                             val t = MyPreferences.getInstance(applicationContext).getJwt()
                             print(t)
