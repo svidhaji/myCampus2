@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                 passwordfield.requestFocus()
                 return@setOnClickListener
             } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-                passwordfield.error = "Password is too weak, enter better password"
+                passwordfield.error = "Password length should be at least 4 letters or more, and must contain at least 1 upper and lower case letter"
                 return@setOnClickListener
             } else {
                 passwordfield.error = null
@@ -68,10 +68,14 @@ class LoginActivity : AppCompatActivity() {
                         response: Response<LoginResponse>
                     ) {
                         if (response.isSuccessful) {
+                            Toast.makeText(
+                                applicationContext,
+                                "Logged in successfully!",
+                                Toast.LENGTH_LONG
+                            ).show()
                             println(response.body()?.token)
-
-                            MyPreferences.getInstance(applicationContext).saveJwt(response.body()?.token!!)
-
+                            MyPreferences.getInstance(applicationContext)
+                                .saveJwt(response.body()?.token!!)
                             val t = MyPreferences.getInstance(applicationContext).getJwt()
                             print(t)
 

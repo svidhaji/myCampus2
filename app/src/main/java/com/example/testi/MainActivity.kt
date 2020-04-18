@@ -308,91 +308,87 @@ class MainActivity : AppCompatActivity() {
 
             super.onPostExecute(result)  //result value is responseSet
 
-            try {
-                Log.d("restaurant", "postexecuting")
-                //For each index of the responseSet, populate fragment_restaurant.xml based on the current index when looping trough all 8
-                for (index: Int in result!!.indices) {
+           try {
+               Log.d("restaurant", "postexecuting")
+               //For each index of the responseSet, populate fragment_restaurant.xml based on the current index when looping trough all 8
+               for (index: Int in result!!.indices) {
 
-                    var q = result?.elementAt(index)
-                    var jsonObj = JSONObject(q)
-                    var timeq = jsonObj.getString("queue_time").toInt()
-                    var pplq = jsonObj.getString("ppl_counter").toInt()
+                   val q = result.elementAt(index)
+                   val jsonObj = JSONObject(q)
+                   val timeq = jsonObj.getString("queue_time").toInt()
+                   val pplq = jsonObj.getString("ppl_counter").toInt()
 
-                    when (index) {
-                        0 -> {
+                   when (index) {
+                       0 -> {
 
-                            findViewById<TextView>(R.id.q1percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q1progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
+                           findViewById<TextView>(R.id.q1percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q1progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
 
-                        1 -> {
+                       1 -> {
 
-                            findViewById<TextView>(R.id.q2percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q2progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
-                        2 -> {
+                           findViewById<TextView>(R.id.q2percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q2progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
+                       2 -> {
 
-                            findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q3progress).setProgress(
-                                5,
-                                true
-                            )
-                        }
-                        3 -> {
+                           findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q3progress).setProgress(
+                               5,
+                               true
+                           )
+                       }
+                       3 -> {
 
-                            findViewById<TextView>(R.id.q4percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q4progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
-                        4 -> {
+                           findViewById<TextView>(R.id.q4percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q4progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
+                       4 -> {
 
-                            findViewById<TextView>(R.id.q5percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q5progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
-                        5 -> {
+                           findViewById<TextView>(R.id.q5percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q5progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
+                       5 -> {
 
-                            findViewById<TextView>(R.id.q6percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q6progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
-                        6 -> {
+                           findViewById<TextView>(R.id.q6percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q6progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
+                       6 -> {
 
-                            findViewById<TextView>(R.id.q7percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q7progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
-                        7 -> {
+                           findViewById<TextView>(R.id.q7percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q7progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
+                       7 -> {
 
-                            findViewById<TextView>(R.id.q8percent).setText(queueTime(timeq))
-                            findViewById<ProgressBar>(R.id.q8progress).setProgress(
-                                (timeq * 17),
-                                true
-                            )
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                print(e.toString())
-                Toast.makeText(
-                    applicationContext,
-                    "Api not returning queue data",
-                    Toast.LENGTH_LONG
-                ).show()
+                           findViewById<TextView>(R.id.q8percent).setText(queueTime(timeq))
+                           findViewById<ProgressBar>(R.id.q8progress).setProgress(
+                               (timeq * 17),
+                               true
+                           )
+                       }
+                   }
+               }
+           } catch (e: Exception) {
+               print(e.toString())
+               Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG ).show()
             }
         }
     }

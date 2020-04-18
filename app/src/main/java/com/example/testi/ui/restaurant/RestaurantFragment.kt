@@ -19,15 +19,15 @@ class RestaurantFragment : Fragment() {
     private lateinit var restaurantViewModel: RestaurantViewModel
     lateinit var token: String
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
 
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
 
     ): View? {
-        restaurantViewModel =
-            ViewModelProviders.of(this).get(RestaurantViewModel::class.java)
+        restaurantViewModel = ViewModelProviders.of(this).get(RestaurantViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_restaurant, container, false)
         return root
 

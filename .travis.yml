@@ -32,3 +32,4 @@ script:
   - ls -lha build/outputs
   - ls -lha build/outputs/apk
   - ls -lha build/outputs/apk/debug
+
