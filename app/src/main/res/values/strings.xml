@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Testi</string>
+    <string name="title_parking">Parking</string>
+    <string name="title_restaurant">Restaurant</string>
+    <string name="title_settings">Settings</string>
+
+    <string name="parking_p10">Parking P10</string>
+    <string name="parking_p5">Parking P5</string>
+    <string name="parking_p10_inside">P10 - Inside</string>
+    <string name="restaurant_usage">Restaurant Usage</string>
+</resources>
