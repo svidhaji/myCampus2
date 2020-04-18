@@ -72,6 +72,7 @@ class Register : AppCompatActivity() {
                     .enqueue(object : Callback<SignUpResponse> {
                         override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
                             if (response.isSuccessful) {
+                                Toast.makeText(applicationContext,response.body().toString() ,Toast.LENGTH_LONG).show()
                                 println(response.body())
 
                                 if (response.code() == 500) {

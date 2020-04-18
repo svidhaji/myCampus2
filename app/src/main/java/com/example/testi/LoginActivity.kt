@@ -16,11 +16,10 @@ import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var apiClient: ApiClient
     private val PASSWORD_PATTERN: Pattern = Pattern.compile(
         "^" +  //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +  //any letter
                 "(?=\\S+$)" +  //no white spaces
                 ".{4,}" +  //at least 4 characters
@@ -53,34 +52,37 @@ class LoginActivity : AppCompatActivity() {
                 passwordfield.requestFocus()
                 return@setOnClickListener
             } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-                passwordfield.error = "Password is too weak, enter better password"
+                passwordfield.error = "Password length should be at least 4 letters or more, and must contain at least 1 upper and lower case letter"
                 return@setOnClickListener
             } else {
                 passwordfield.error = null
             }
-           ApiClient.instance.loginUser(UserLogin(email, password))
+            ApiClient.instance.loginUser(UserLogin(email, password))
                 .enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
-                     if (response.isSuccessful) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(
+                                applicationContext,
+                                "Logged in successfully!",
+                                Toast.LENGTH_LONG
+                            ).show()
                             println(response.body()?.token)
-
-                            MyPreferences.getInstance(applicationContext).saveJwt(response.body()?.token!!)
-
-                        val t = MyPreferences.getInstance(applicationContext).getJwt()
-                        print(t)
-
+                            MyPreferences.getInstance(applicationContext)
+                                .saveJwt(response.body()?.token!!)
+                            val t = MyPreferences.getInstance(applicationContext).getJwt()
+                            print(t)
                             val intent = Intent(applicationContext, MainActivity::class.java)
                             intent.flags =
                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                             startActivity(intent)
-                       } else {
+                        } else {
                             Toast.makeText(
                                 applicationContext,
-                                response.message(),
+                                "Invalid username or password.. Try again!",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -93,6 +95,12 @@ class LoginActivity : AppCompatActivity() {
 
                 })
 
+        }
+
+        registerB.setOnClickListener {
+            val intent = Intent(applicationContext, Register::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 

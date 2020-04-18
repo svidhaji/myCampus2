@@ -125,7 +125,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/registerbutton"
+            android:id="@+id/registerB"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"

@@ -1,37 +1,22 @@
 package com.example.testi
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.testi.ui.parking.ParkingFragment
-import com.example.testi.ui.restaurant.RestaurantFragment
-import com.example.testi.ui.settings.SettingsFragment
-import kotlinx.android.synthetic.main.fragment_settings.*
-import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import org.json.JSONObject
-import java.util.concurrent.TimeUnit
+import java.net.URL
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class MainActivity : AppCompatActivity() {
@@ -45,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        /*val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setActionBar(toolbar)*/
 
         //Endpoint urls for their respective parking areas
         val parkingURLP5 = "https://mycampus-server.karage.fi/api/common/parking/status/P5"
@@ -90,65 +77,71 @@ class MainActivity : AppCompatActivity() {
 
 
         //Navigation on touch listener. Pressing the navigation buttons will fetch the data to the associated fragment
+        /* navView.setOnNavigationItemSelectedListener {
+
+            if (it.itemId === R.id.navigation_parking) {
+
+
+            } else if (it.itemId === R.id.navigation_restaurant) {
+
+                fetchRestaurantFillRate().execute(midpoint)
+                fetchRestaurantData().execute(restaurantURLS)
+
+            } else if (it.itemId === R.id.navigation_settings) {
+
+                val textView: TextView? = findViewById(R.id.launchcount) as? TextView
+                textView?.text = "launchcount: " + loginCount!!.toString()
+
+            }
+            return@setOnNavigationItemSelectedListener true
+        }*/
         navView.setOnNavigationItemSelectedListener {
 
-            if (it.itemId === R.id.navigation_parking) {
+            when (it.itemId) {
+                R.id.navigation_parking -> {
+                    //Do stuff
+                    fetchParkingData().execute(parkingURLP5)
+                    fetchParkingData().execute(parkingURLP10)
+                    fetchParkingData().execute(parkingURLP10TOP)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.navigation_restaurant -> {
 
+                    fetchRestaurantFillRate().execute(midpoint)
+                    fetchRestaurantData().execute(restaurantURLS)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.navigation_settings -> {
+                    //Do stuff
+                    val textView: TextView? = findViewById(R.id.launchcount) as? TextView
+                    textView?.text = "launchcount: " + loginCount!!.toString()
 
-            } else if (it.itemId === R.id.navigation_restaurant) {
+                    val btn = findViewById<Button>(R.id.logButton)
 
-                fetchRestaurantFillRate().execute(midpoint)
-                fetchRestaurantData().execute(restaurantURLS)
-
-            } else if (it.itemId === R.id.navigation_settings) {
-
-                val textView: TextView? = findViewById(R.id.launchcount) as? TextView
-                textView?.text = "launchcount: " + loginCount!!.toString()
-
-                val logoutBtn: Button = findViewById(R.id.logoutbutton)
-                logoutBtn.setOnClickListener {
-                    println("clicked")
-                    val intent = Intent(applicationContext, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    finish()
+                    btn.setOnClickListener {
+                        println("clicked logout button")
+                        val intent = Intent(applicationContext, LoginActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                    }
+                    return@setOnNavigationItemSelectedListener true
                 }
             }
-            return@setOnNavigationItemSelectedListener true
+            false
         }
-        navView.setOnNavigationItemReselectedListener {
 
-            if (it.itemId === R.id.navigation_parking) {
-                //Do stuff
-                fetchParkingData().execute(parkingURLP5)
-                fetchParkingData().execute(parkingURLP10)
-                fetchParkingData().execute(parkingURLP10TOP)
-
-            } else if (it.itemId === R.id.navigation_restaurant) {
-
-                fetchRestaurantFillRate().execute(midpoint)
-
-                fetchRestaurantData().execute(restaurantURLS)
-
-            } else if (it.itemId === R.id.navigation_settings) {
-                //Do stuff
-                val textView: TextView? = findViewById(R.id.launchcount) as? TextView
-                textView?.text = "launchcount: " + loginCount!!.toString()
-
-            }
-        }
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_parking, R.id.navigation_restaurant, R.id.navigation_settings
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupWithNavController(
+            androidx.appcompat.widget.Toolbar(applicationContext),
+            navController,
+            appBarConfiguration
+        )
         navView.setupWithNavController(navController)
-
-        supportActionBar?.hide()
-        actionBar?.hide()
-
 
     }
 
@@ -249,10 +242,10 @@ class MainActivity : AppCompatActivity() {
                //For each index of the responseSet, populate fragment_restaurant.xml based on the current index when looping trough all 8
                for (index: Int in result!!.indices) {
 
-                   var q = result?.elementAt(index)
-                   var jsonObj = JSONObject(q)
-                   var timeq = jsonObj.getString("queue_time").toInt()
-                   var pplq = jsonObj.getString("ppl_counter").toInt()
+                   val q = result.elementAt(index)
+                   val jsonObj = JSONObject(q)
+                   val timeq = jsonObj.getString("queue_time").toInt()
+                   val pplq = jsonObj.getString("ppl_counter").toInt()
 
                    when (index) {
                        0 -> {
