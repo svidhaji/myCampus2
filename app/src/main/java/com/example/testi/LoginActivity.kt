@@ -106,11 +106,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if (MyPreferences.getInstance(this).getLoginCount() <= 0) {
+        /*if (MyPreferences.getInstance(this).getLoginCount() <= 0) {
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
             startActivity(intent)
-        }
+        }*/
     }
 }
