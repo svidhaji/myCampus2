@@ -173,7 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/textfield_bg"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus magna a mauris accumsan sollicitudin. Aliquam gravida ipsum ut tellus hendrerit, mollis faucibus nunc semper. Nulla ullamcorper dolor et tincidunt interdum. Proin et orci bibendum, elementum elit a, iaculis est. Vestibulum consequat eros et aliquet rhoncus."
+        android:text="This Application provides real time information of restaurant-queue wait times and parking disposition to Nokia employees. Please login with Nokia email and double tap navigationbar elements to update to real time information."
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"

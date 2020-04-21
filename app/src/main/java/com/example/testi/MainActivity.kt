@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_settings -> {
 
+
                     val logoutbtn: Button = findViewById(R.id.logoutbutton)
                     logoutbtn.setOnClickListener {
 
