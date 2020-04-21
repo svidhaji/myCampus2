@@ -20,4 +20,10 @@ interface ApiService {
     fun createUser(
         @Body userR: UserReg
     ):Call<SignUpResponse>
+
+    @POST("auth/forgot_password")
+    @Headers("Content-Type: application/json")
+    fun resetPass(
+        @Body email: String
+    ): Call<PasswordReset>
 }

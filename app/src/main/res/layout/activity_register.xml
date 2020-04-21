@@ -10,17 +10,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_margin="30dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:src="@drawable/nokia_logo" />
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo_mycampus" />
 
         <FrameLayout
             android:layout_margin="5dp"
@@ -136,6 +138,16 @@
             android:layout_height="40dp"
             android:background="@drawable/card_bg"
             android:text="Register"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/backtologin"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/card_bg"
+            android:text="Back  to login"
             android:textColor="@color/white"
             android:textSize="18sp"/>
 
