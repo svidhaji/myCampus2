@@ -2,12 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:animateLayoutChanges="true">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_help_outline_24px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/white"
+        app:borderWidth="0dp"/>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
@@ -51,12 +65,13 @@
                     android:tint="@color/colorPrimary" />
 
                 <EditText
-                    android:layout_gravity="center"
-                    android:background="#fff"
                     android:id="@+id/emailfield"
                     style="@style/Widget.AppCompat.EditText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:background="#fff"
                     android:hint="Enter Email"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
@@ -96,12 +111,13 @@
                     android:tint="@color/colorPrimary" />
 
                 <EditText
-                    android:layout_gravity="center"
-                    android:background="#fff"
                     android:id="@+id/passwordfield"
                     style="@style/Widget.AppCompat.EditText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:background="#fff"
                     android:hint="Enter Password"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
@@ -148,8 +164,19 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
 
-
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/fabtext"
+        android:padding="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/textfield_bg"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus magna a mauris accumsan sollicitudin. Aliquam gravida ipsum ut tellus hendrerit, mollis faucibus nunc semper. Nulla ullamcorper dolor et tincidunt interdum. Proin et orci bibendum, elementum elit a, iaculis est. Vestibulum consequat eros et aliquet rhoncus."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
