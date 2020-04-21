@@ -36,6 +36,12 @@ class MyPreferences (cntx : Context) {
         return preference.getString(JWT, null).toString()
     }
 
+    fun destroyJwt () {
+        val editor = preference.edit()
+        editor.putString(JWT, null)
+        editor.apply()
+    }
+
     fun setLoginCount(count:Int) {
         val editor = preference.edit()
         editor.putInt(PREFERENCE_LOGIN_COUNT, count)

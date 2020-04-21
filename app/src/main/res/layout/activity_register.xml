@@ -18,10 +18,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/logo_mycampus" />
 
         <FrameLayout
@@ -51,11 +50,18 @@
 
                 <EditText
                     android:id="@+id/emailfield"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:background="#fff"
                     android:hint="Enter Email"
                     android:importantForAutofill="no"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
@@ -85,10 +91,17 @@
                     android:src="@drawable/account_circle_24px"
                     android:tint="@color/colorPrimary"/>
                 <EditText
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:background="#fff"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="18sp"
                     android:hint="Enter Name"
                     android:id="@+id/namefield"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"/>
 
@@ -120,10 +133,17 @@
                     android:src="@drawable/key_24px"
                     android:tint="@color/colorPrimary"/>
                 <EditText
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:background="#fff"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="18sp"
                     android:hint="Enter Password"
                     android:id="@+id/passwordfield"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"/>
 
@@ -131,11 +151,12 @@
         </FrameLayout>
 
         <Button
-            android:layout_margin="5dp"
             android:id="@+id/registerbutton"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:background="@drawable/card_bg"
             android:text="Register"
             android:textColor="@color/white"

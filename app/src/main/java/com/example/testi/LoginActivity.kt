@@ -3,11 +3,16 @@ package com.example.testi
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testi.model.ApiClient
 import com.example.testi.model.LoginResponse
 import com.example.testi.model.UserLogin
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +38,21 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
         actionBar?.hide()
+
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val fabtext = findViewById<TextView>(R.id.fabtext)
+        fab.setOnClickListener {
+            if (fabtext.visibility == View.GONE){
+                fabtext.visibility = View.VISIBLE;
+            }
+            else{
+                fabtext.visibility = View.GONE
+            }
+        }
+
+        fabtext.setOnClickListener {
+            fabtext.visibility = View.GONE
+        }
 
         loginbutton.setOnClickListener {
 
@@ -118,11 +138,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if (MyPreferences.getInstance(this).getLoginCount() <= 0) {
+        /*if (MyPreferences.getInstance(this).getLoginCount() <= 0) {
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
             startActivity(intent)
-        }
+        }*/
     }
 }

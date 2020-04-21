@@ -36,6 +36,8 @@ import org.json.JSONObject
 import java.util.concurrent.TimeUnit
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
+
+//Mainactivity contains definitons, onclicklisteners and asynctasks to fetch API data
 class MainActivity : AppCompatActivity() {
 
     lateinit var token: String
@@ -108,8 +110,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 R.id.navigation_settings -> {
-                    val textView: TextView? = findViewById(R.id.launchcount) as? TextView
-                    textView?.text = "launchcount: " + loginCount!!.toString()
+
 
                     val logoutbtn: Button = findViewById(R.id.logoutbutton)
                     logoutbtn.setOnClickListener {
@@ -117,41 +118,13 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         jwt = null
+                        myPreference.destroyJwt()
                     }
                 }
             }
             return@setOnNavigationItemSelectedListener true
         }
-        /*if (it.itemId === R.id.navigation_parking) {
 
-
-            } else if (it.itemId === R.id.navigation_restaurant) {
-                it.setOnActionExpandListener()
-
-                fetchRestaurantFillRate().execute(midpoint)
-                fetchRestaurantData().execute(restaurantURLS)
-
-            } else if (it.itemId === R.id.navigation_settings) {
-
-
-                val textView: TextView? = findViewById(R.id.launchcount) as? TextView
-                textView?.text = "launchcount: " + loginCount!!.toString()
-
-                val logoutbtn: Button = findViewById<Button>(R.id.logoutbutton)
-                logoutbtn.setOnClickListener {
-
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    jwt = null
-                    token = ""
-
-                }
-
-
-            }
-               return@setOnNavigationItemSelectedListener true
-            }
-        }*/
         navView.setOnNavigationItemReselectedListener {
 
             when (it.itemId) {
@@ -168,8 +141,6 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 R.id.navigation_settings -> {
-                    val textView: TextView? = findViewById(R.id.launchcount) as? TextView
-                    textView?.text = "launchcount: " + loginCount!!.toString()
 
                     val logoutbtn: Button = findViewById<Button>(R.id.logoutbutton)
                     logoutbtn.setOnClickListener {
@@ -177,41 +148,13 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         jwt = null
+                        myPreference.destroyJwt()
                     }
                 }
             }
             //return@setOnNavigationItemReselectedListener
         }
 
-        /*if (it.itemId === R.id.navigation_parking) {
-            //Do stuff
-            fetchParkingData().execute(parkingURLP5)
-            fetchParkingData().execute(parkingURLP10)
-            fetchParkingData().execute(parkingURLP10TOP)
-
-        } else if (it.itemId === R.id.navigation_restaurant) {
-
-            fetchRestaurantFillRate().execute(midpoint)
-
-            fetchRestaurantData().execute(restaurantURLS)
-
-        } else if (it.itemId === R.id.navigation_settings) {
-            //Do stuff
-            val textView: TextView? = findViewById(R.id.launchcount) as? TextView
-            textView?.text = "launchcount: " + loginCount!!.toString()
-
-            val logoutbtn: Button = findViewById<Button>(R.id.logoutbutton)
-            logoutbtn.setOnClickListener {
-
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                jwt = null
-
-            }
-
-        }
-        }
-    }*/
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -388,7 +331,7 @@ class MainActivity : AppCompatActivity() {
                }
            } catch (e: Exception) {
                print(e.toString())
-               Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG ).show()
+               //Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG ).show()
             }
         }
     }
