@@ -226,7 +226,7 @@ class MainActivity : AppCompatActivity() {
 
                            findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
                            findViewById<ProgressBar>(R.id.q3progress).setProgress(
-                               5,
+                               (timeq * 17),
                                true
                            )
                        }
