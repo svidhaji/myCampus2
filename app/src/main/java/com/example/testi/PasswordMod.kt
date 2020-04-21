@@ -57,6 +57,12 @@ class PasswordMod : AppCompatActivity() {
 
                 })
         }
+        backL.setOnClickListener {
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+        }
     }
 
 }
