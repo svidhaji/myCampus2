@@ -6,34 +6,62 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+    <FrameLayout
+        android:id="@+id/hoster_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="78dp"/>
+
+    <LinearLayout
         android:id="@+id/nav_view"
-        android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@drawable/card_bg"
-        android:layout_margin="10dp"
-        app:itemTextColor="@color/white"
-        app:itemIconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        android:layout_margin="10dp">
 
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        android:layout_marginBottom="74dp"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:navGraph="@navigation/mobile_navigation" />
+        <Button
+            android:id="@+id/navigation_parking"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_bg"
+            android:drawableTop="@drawable/ic_local_parking_24px"
+            android:drawableTint="@color/white"
+            android:text="@string/title_parking"
+            android:textColor="@color/white"/>
 
+        <Button
+            android:id="@+id/navigation_restaurant"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_bg"
+            android:drawableTop="@drawable/restaurant_24px"
+            android:drawableTint="@color/white"
+            android:text="@string/title_restaurant"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/navigation_settings"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_bg"
+            android:drawableTop="@drawable/settings_24px"
+            android:drawableTint="@color/white"
+            android:text="@string/title_settings"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
