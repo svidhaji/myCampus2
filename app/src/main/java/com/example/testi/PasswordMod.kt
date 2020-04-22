@@ -2,6 +2,7 @@ package com.example.testi
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -36,20 +37,18 @@ class PasswordMod : AppCompatActivity() {
                 emailfield.error = null
             }
 
-            ApiClient.instance.resetPass(email)
+            ApiClient.instance.resetPass(UserEmail(email))
                 .enqueue(object : Callback<PasswordReset> {
                     override fun onResponse(call: Call<PasswordReset>, response: Response<PasswordReset>) {
-                        if (response.isSuccessful) {
-                            val body = response.body()?.message
-                            val gson = GsonBuilder().create()
-                            val resp = gson.fromJson(body, PasswordReset::class.java)
+                        if (!response.isSuccessful) {
+                        // Log.d("TAG", "onResponse: Server response:" + response.body()?.error.toString())
                             // After successful response, reset token will be sent to e-mail
-                            Toast.makeText(applicationContext,resp.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, response.code().toString(), Toast.LENGTH_LONG).show()
                             println(response.message().toString())
 
-                        } else {
-                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
                         }
+                        Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_LONG).show()
+
                     }
                     // Here, we catch an error and show it as a Toast
                     override fun onFailure(call: Call<PasswordReset>, t: Throwable) {

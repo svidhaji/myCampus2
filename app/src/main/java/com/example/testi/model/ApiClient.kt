@@ -21,6 +21,10 @@ object ApiClient {
             chain.proceed(request)
         }.build()
 
+    /*val gson = GsonBuilder()
+        .setLenient()
+        .create()*/
+
     val instance: ApiService by lazy{
         val retrofit = Retrofit.Builder()
             .baseUrl(baseURl)

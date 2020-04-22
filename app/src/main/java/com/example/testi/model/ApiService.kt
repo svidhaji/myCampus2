@@ -24,6 +24,6 @@ interface ApiService {
     @POST("auth/forgot_password")
     @Headers("Content-Type: application/json")
     fun resetPass(
-        @Body body : String
+        @Body email : UserEmail
     ): Call<PasswordReset>
 }
