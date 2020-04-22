@@ -33,6 +33,9 @@ class Register : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        supportActionBar?.hide()
+        actionBar?.hide()
+
  //  Listener for Register button
         registerbutton.setOnClickListener {
             val email = emailfield.text.toString().trim()
@@ -98,6 +101,11 @@ class Register : AppCompatActivity() {
 
                     })
 
+        }
+        backtologin.setOnClickListener {
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 }
