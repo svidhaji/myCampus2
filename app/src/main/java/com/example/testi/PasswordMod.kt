@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testi.model.ApiClient
-import com.example.testi.model.PasswordReset
-import com.example.testi.model.SignUpResponse
-import com.example.testi.model.UserReg
+import com.example.testi.model.*
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_pass.*
 import kotlinx.android.synthetic.main.activity_pass.emailfield
 import kotlinx.android.synthetic.main.activity_register.*
@@ -42,9 +40,12 @@ class PasswordMod : AppCompatActivity() {
                 .enqueue(object : Callback<PasswordReset> {
                     override fun onResponse(call: Call<PasswordReset>, response: Response<PasswordReset>) {
                         if (response.isSuccessful) {
+                            val body = response.body()?.message
+                            val gson = GsonBuilder().create()
+                            val resp = gson.fromJson(body, PasswordReset::class.java)
                             // After successful response, reset token will be sent to e-mail
-                            Toast.makeText(applicationContext,"ERROR", Toast.LENGTH_LONG).show()
-                            println(response.body()?.errors)
+                            Toast.makeText(applicationContext,resp.message, Toast.LENGTH_LONG).show()
+                            println(response.message().toString())
 
                         } else {
                             Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
