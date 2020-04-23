@@ -25,7 +25,6 @@ import com.example.testi.ui.parking.ParkingFragment
 import com.example.testi.ui.restaurant.RestaurantFragment
 import com.example.testi.ui.settings.SettingsFragment
 import kotlinx.android.synthetic.main.fragment_settings.*
-import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 import okhttp3.OkHttpClient
@@ -34,6 +33,8 @@ import okhttp3.RequestBody
 import okhttp3.internal.wait
 import org.json.JSONObject
 import java.util.concurrent.TimeUnit
+import kotlinx.android.synthetic.main.activity_main.*
+import java.net.URL
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 
@@ -41,11 +42,17 @@ import java.util.concurrent.TimeUnit
 class MainActivity : AppCompatActivity() {
 
     lateinit var token: String
+    val fragmentManager = supportFragmentManager
+    lateinit var btn: Button
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val toParking = findViewById<Button>(R.id.navigation_parking)
+        val toRestaurant = findViewById<Button>(R.id.navigation_restaurant)
+        val toSettings = findViewById<Button>(R.id.navigation_settings)
 
         //Endpoint urls for their respective parking areas
         val parkingURLP5 = "https://mycampus-server.karage.fi/api/common/parking/status/P5"
@@ -78,9 +85,6 @@ class MainActivity : AppCompatActivity() {
 
         fetchParkingData().execute(parkingURLS)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        val navController = findNavController(R.id.nav_host_fragment)
 
         val myPreference = MyPreferences(this)
         var loginCount = myPreference.getLoginCount()
@@ -94,75 +98,45 @@ class MainActivity : AppCompatActivity() {
 
 
         //Navigation on touch listener. Pressing the navigation buttons will fetch the data to the associated fragment
-        navView.setOnNavigationItemSelectedListener {
-
-            when (it.itemId) {
-                R.id.navigation_parking -> {
-
-                    fetchParkingData().execute(parkingURLS)
 
 
-                }
-                R.id.navigation_restaurant -> {
+        toParking.setOnClickListener {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            val fragmentparking = ParkingFragment()
+            fragmentTransaction.replace(R.id.hoster_frag, fragmentparking)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
 
-                    fetchRestaurantData().execute(restaurantURLS)
-                    fetchRestaurantFillRate().execute(midpoint)
-
-                }
-                R.id.navigation_settings -> {
-
-
-                    val logoutbtn: Button = findViewById(R.id.logoutbutton)
-                    logoutbtn.setOnClickListener {
-
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        jwt = null
-                        myPreference.destroyJwt()
-                    }
-                }
-            }
-            return@setOnNavigationItemSelectedListener true
+            fetchParkingData().execute(parkingURLS)
         }
+        toRestaurant.setOnClickListener {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            val fragmentRestaurant = RestaurantFragment()
+            fragmentTransaction.replace(R.id.hoster_frag,  fragmentRestaurant)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
 
-        navView.setOnNavigationItemReselectedListener {
-
-            when (it.itemId) {
-                R.id.navigation_parking -> {
-
-                    fetchParkingData().execute(parkingURLS)
-
-
-                }
-                R.id.navigation_restaurant -> {
-
-                    fetchRestaurantData().execute(restaurantURLS)
-                    fetchRestaurantFillRate().execute(midpoint)
-
-                }
-                R.id.navigation_settings -> {
-
-                    val logoutbtn: Button = findViewById<Button>(R.id.logoutbutton)
-                    logoutbtn.setOnClickListener {
-
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        jwt = null
-                        myPreference.destroyJwt()
-                    }
-                }
-            }
-            //return@setOnNavigationItemReselectedListener
+            fetchRestaurantData().execute(restaurantURLS)
+            fetchRestaurantFillRate().execute(midpoint)
         }
+        toSettings.setOnClickListener {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            val fragmentSettings = SettingsFragment()
+            fragmentTransaction.replace(R.id.hoster_frag, fragmentSettings)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
 
+            /*btn = findViewById<Button>(R.id.logoutbutton)
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_parking, R.id.navigation_restaurant, R.id.navigation_settings
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+            btn.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                jwt = null
+                myPreference.destroyJwt()
+            }
+            val user = myPreference.getUser().toString()!!
+            loggedas.text = user!!*/
+        }
 
         supportActionBar?.hide()
         actionBar?.hide()
@@ -175,7 +149,10 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
 
+
     }
+
+
 
     //Function to return restaurant queue time based on the API estimate value.
     fun queueTime(value: Int): String {
@@ -283,7 +260,7 @@ class MainActivity : AppCompatActivity() {
 
                            findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
                            findViewById<ProgressBar>(R.id.q3progress).setProgress(
-                               5,
+                               17,
                                true
                            )
                        }
@@ -411,11 +388,11 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 print(e.toString())
-                Toast.makeText(
+                /*Toast.makeText(
                     applicationContext,
                     "Api not returning parking data",
                     Toast.LENGTH_LONG
-                ).show()
+                ).show()*/
             }
         }
     }

@@ -43,7 +43,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="user: none"
             android:textAlignment="center"
             android:textSize="18sp"/>
 

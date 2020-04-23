@@ -26,4 +26,5 @@ class SettingsFragment : Fragment() {
         return root
 
     }
+
 }
