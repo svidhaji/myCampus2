@@ -91,7 +91,7 @@
         </FrameLayout>
 
         <Button
-            android:id="@+id/resetbutton"
+            android:id="@+id/resetBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -109,7 +109,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:background="@drawable/card_bg"
-            android:text="Back to login"
+            android:text="Continue"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

@@ -23,7 +23,7 @@ class PasswordMod : AppCompatActivity() {
         supportActionBar?.hide()
         actionBar?.hide()
 
-        resetbutton.setOnClickListener {
+        resetBtn.setOnClickListener {
             val email = emailfield.text.toString().trim()
 
             if (email.isEmpty()) {
@@ -40,15 +40,15 @@ class PasswordMod : AppCompatActivity() {
             ApiClient.instance.resetPass(UserEmail(email))
                 .enqueue(object : Callback<PasswordReset> {
                     override fun onResponse(call: Call<PasswordReset>, response: Response<PasswordReset>) {
-                        if (!response.isSuccessful) {
+                        if (response.isSuccessful) {
                         // Log.d("TAG", "onResponse: Server response:" + response.body()?.error.toString())
                             // After successful response, reset token will be sent to e-mail
                             Toast.makeText(applicationContext, response.code().toString(), Toast.LENGTH_LONG).show()
                             println(response.message().toString())
 
+                        } else {
+                            Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_LONG).show()
                         }
-                        Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_LONG).show()
-
                     }
                     // Here, we catch an error and show it as a Toast
                     override fun onFailure(call: Call<PasswordReset>, t: Throwable) {
@@ -58,7 +58,7 @@ class PasswordMod : AppCompatActivity() {
                 })
         }
         backL.setOnClickListener {
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext, ResetPassword::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
             startActivity(intent)

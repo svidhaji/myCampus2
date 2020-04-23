@@ -26,4 +26,16 @@ interface ApiService {
     fun resetPass(
         @Body email : UserEmail
     ): Call<PasswordReset>
+
+    @POST("auth/reset_password")
+    @Headers("Content-Type: application/json")
+    fun reset(
+        @Body reset : ResetPass
+    ): Call<PasswordReset>
+
+    @POST("auth/confirmation")
+    @Headers("Content-Type: application/json")
+    fun validate(
+        @Body validate : Validate
+    ): Call<LoginResponse>
 }
