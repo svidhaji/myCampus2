@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity() {
         val toRestaurant = findViewById<Button>(R.id.navigation_restaurant)
         val toSettings = findViewById<Button>(R.id.navigation_settings)
 
+        val firstfragmentTransaction = fragmentManager.beginTransaction()
+        val fragmentparking = ParkingFragment()
+        firstfragmentTransaction.replace(R.id.hoster_frag, fragmentparking)
+        firstfragmentTransaction.addToBackStack(null)
+        firstfragmentTransaction.commit()
+
         //Endpoint urls for their respective parking areas
         val parkingURLP5 = "https://mycampus-server.karage.fi/api/common/parking/status/P5"
         val parkingURLP10 = "https://mycampus-server.karage.fi/api/common/parking/status/P10"
