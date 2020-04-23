@@ -42,6 +42,9 @@ class LoginActivity : AppCompatActivity() {
 
         val myPreference = MyPreferences(this)
 
+        val d = myPreference.getJwt()
+        print(d)
+
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         val fabtext = findViewById<TextView>(R.id.fabtext)
         fab.setOnClickListener {
@@ -97,7 +100,8 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.LENGTH_LONG
                             ).show()
 
-                            myPreference.saveUser(email)
+                            val user = response.body()?.email
+                            myPreference.saveUser(user.toString())
 
                             println(response.body()?.token)
                             MyPreferences.getInstance(applicationContext)

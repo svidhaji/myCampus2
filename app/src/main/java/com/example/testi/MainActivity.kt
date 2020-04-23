@@ -16,7 +16,9 @@ import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.whenCreated
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -43,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var token: String
     val fragmentManager = supportFragmentManager
-    lateinit var btn: Button
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,6 +106,9 @@ class MainActivity : AppCompatActivity() {
 
         //Navigation on touch listener. Pressing the navigation buttons will fetch the data to the associated fragment
 
+        ParkingFragment()
+        SettingsFragment()
+        RestaurantFragment()
 
         toParking.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
@@ -118,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         toRestaurant.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
             val fragmentRestaurant = RestaurantFragment()
-            fragmentTransaction.replace(R.id.hoster_frag,  fragmentRestaurant)
+            fragmentTransaction.replace(R.id.hoster_frag, fragmentRestaurant)
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
 
@@ -126,38 +130,38 @@ class MainActivity : AppCompatActivity() {
             fetchRestaurantFillRate().execute(midpoint)
         }
         toSettings.setOnClickListener {
-            val fragmentTransaction = fragmentManager.beginTransaction()
+
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+
+          /*  val fragmentTransaction = fragmentManager.beginTransaction()
             val fragmentSettings = SettingsFragment()
             fragmentTransaction.replace(R.id.hoster_frag, fragmentSettings)
             fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-
-            /*btn = findViewById<Button>(R.id.logoutbutton)
-
-            btn.setOnClickListener {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                jwt = null
-                myPreference.destroyJwt()
-            }
-            val user = myPreference.getUser().toString()!!
-            loggedas.text = user!!*/
+            fragmentTransaction.commit()*/
         }
+
 
         supportActionBar?.hide()
         actionBar?.hide()
-
-        if (loginCount < 3) {
-            Toast.makeText(
-                applicationContext,
-                "Double tap navigation bar section to get current data",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-
-
     }
 
+    fun click() {
+        val myPreference = MyPreferences(this)
+
+        logoutbutton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+
+            var jwt = myPreference.getJwt()
+            jwt = null
+            myPreference.destroyJwt()
+
+        }
+        val user = myPreference.getUser().toString()
+        loggedas.text = user
+
+    }
 
 
     //Function to return restaurant queue time based on the API estimate value.
@@ -234,87 +238,87 @@ class MainActivity : AppCompatActivity() {
 
             super.onPostExecute(result)  //result value is responseSet
 
-           try {
-               Log.d("restaurant", "postexecuting")
-               //For each index of the responseSet, populate fragment_restaurant.xml based on the current index when looping trough all 8
-               for (index: Int in result!!.indices) {
+            try {
+                Log.d("restaurant", "postexecuting")
+                //For each index of the responseSet, populate fragment_restaurant.xml based on the current index when looping trough all 8
+                for (index: Int in result!!.indices) {
 
-                   val q = result.elementAt(index)
-                   val jsonObj = JSONObject(q)
-                   val timeq = jsonObj.getString("queue_time").toInt()
-                   val pplq = jsonObj.getString("ppl_counter").toInt()
+                    val q = result.elementAt(index)
+                    val jsonObj = JSONObject(q)
+                    val timeq = jsonObj.getString("queue_time").toInt()
+                    val pplq = jsonObj.getString("ppl_counter").toInt()
 
-                   when (index) {
-                       0 -> {
+                    when (index) {
+                        0 -> {
 
-                           findViewById<TextView>(R.id.q1percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q1progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
+                            findViewById<TextView>(R.id.q1percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q1progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
 
-                       1 -> {
+                        1 -> {
 
-                           findViewById<TextView>(R.id.q2percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q2progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
-                       2 -> {
+                            findViewById<TextView>(R.id.q2percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q2progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
+                        2 -> {
 
-                           findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q3progress).setProgress(
-                               17,
-                               true
-                           )
-                       }
-                       3 -> {
+                            findViewById<TextView>(R.id.q3percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q3progress).setProgress(
+                                17,
+                                true
+                            )
+                        }
+                        3 -> {
 
-                           findViewById<TextView>(R.id.q4percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q4progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
-                       4 -> {
+                            findViewById<TextView>(R.id.q4percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q4progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
+                        4 -> {
 
-                           findViewById<TextView>(R.id.q5percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q5progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
-                       5 -> {
+                            findViewById<TextView>(R.id.q5percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q5progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
+                        5 -> {
 
-                           findViewById<TextView>(R.id.q6percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q6progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
-                       6 -> {
+                            findViewById<TextView>(R.id.q6percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q6progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
+                        6 -> {
 
-                           findViewById<TextView>(R.id.q7percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q7progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
-                       7 -> {
+                            findViewById<TextView>(R.id.q7percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q7progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
+                        7 -> {
 
-                           findViewById<TextView>(R.id.q8percent).setText(queueTime(timeq))
-                           findViewById<ProgressBar>(R.id.q8progress).setProgress(
-                               (timeq * 17),
-                               true
-                           )
-                       }
-                   }
-               }
-           } catch (e: Exception) {
-               print(e.toString())
-               //Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG ).show()
+                            findViewById<TextView>(R.id.q8percent).setText(queueTime(timeq))
+                            findViewById<ProgressBar>(R.id.q8progress).setProgress(
+                                (timeq * 17),
+                                true
+                            )
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                print(e.toString())
+                //Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG ).show()
             }
         }
     }
@@ -376,18 +380,27 @@ class MainActivity : AppCompatActivity() {
                     when (index) {
                         0 -> {
 
-                            findViewById<ProgressBar>(R.id.p5progress).setProgress(percent.toInt(), true)
+                            findViewById<ProgressBar>(R.id.p5progress).setProgress(
+                                percent.toInt(),
+                                true
+                            )
                             findViewById<TextView>(R.id.p5textprogress).text = "$percent%"
                         }
 
                         1 -> {
 
-                            findViewById<ProgressBar>(R.id.p10progress).setProgress(percent.toInt(), true)
+                            findViewById<ProgressBar>(R.id.p10progress).setProgress(
+                                percent.toInt(),
+                                true
+                            )
                             findViewById<TextView>(R.id.p10textprogress).text = "$percent%"
                         }
                         2 -> {
 
-                            findViewById<ProgressBar>(R.id.p10insideprogress).setProgress(percent.toInt(), true)
+                            findViewById<ProgressBar>(R.id.p10insideprogress).setProgress(
+                                percent.toInt(),
+                                true
+                            )
                             findViewById<TextView>(R.id.p10insidetextprogress).text = "$percent%"
                         }
                     }
@@ -402,6 +415,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
     inner class fetchRestaurantFillRate() : AsyncTask<String, Void, String>() {
         override fun onPreExecute() {

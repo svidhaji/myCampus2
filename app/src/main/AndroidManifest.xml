@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".SettingsActivity"/>
         <activity android:name=".Register"/>
         <activity android:name=".PasswordMod" />
         <activity android:name=".ValidateActivity" />

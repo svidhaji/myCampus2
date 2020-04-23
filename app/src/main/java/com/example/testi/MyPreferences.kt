@@ -1,6 +1,8 @@
 package com.example.testi
 
 import android.content.Context
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 
 class MyPreferences (cntx : Context) {
 
@@ -38,7 +40,7 @@ class MyPreferences (cntx : Context) {
     }
 
     fun getUser () : String? {
-        return preference.getString(JWT, null).toString()
+        return preference.getString(USER, null).toString()
     }
 
     fun destroyJwt () {
@@ -57,6 +59,16 @@ class MyPreferences (cntx : Context) {
         val editor = preference.edit()
         editor.putString(JWT,token)
         editor.apply()
+        timeOut(JWT)
+    }
+    fun timeOut(token: String) {
+        val editor = preference.edit()
+        val T = Thread{
+            Thread.sleep(7200000)
+            editor.putString(JWT, null)
+            editor.apply()
+        }
+        T.start()
     }
 
     fun saveUser(email:String) {
