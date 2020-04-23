@@ -23,6 +23,9 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Register"/>
+        <activity android:name=".PasswordMod" />
+        <activity android:name=".ValidateActivity" />
+        <activity android:name=".ResetPassword" />
     </application>
 
 </manifest>

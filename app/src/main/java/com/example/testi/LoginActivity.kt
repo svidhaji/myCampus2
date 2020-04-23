@@ -113,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 applicationContext,
-                                response.message(),
+                                "Wrong username or password..",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -126,6 +126,18 @@ class LoginActivity : AppCompatActivity() {
 
                 })
 
+        }
+        registerbutton.setOnClickListener {
+            val intent = Intent(applicationContext, Register::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+        }
+        forgotbutton.setOnClickListener {
+            val intent = Intent(applicationContext, PasswordMod::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
         }
     }
 

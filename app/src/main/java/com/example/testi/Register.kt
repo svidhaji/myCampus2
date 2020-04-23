@@ -2,6 +2,7 @@ package com.example.testi
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,9 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        supportActionBar?.hide()
+        actionBar?.hide()
 
  //  Listener for Register button
         registerbutton.setOnClickListener {
@@ -71,13 +75,13 @@ class Register : AppCompatActivity() {
                 ApiClient.instance.createUser(UserReg(email, name, password))
                     .enqueue(object : Callback<SignUpResponse> {
                         override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
+                            Log.d("REGISTER", "${response.body()} responsecode: ${response.code()}")
                             if (response.isSuccessful) {
                                 Toast.makeText(applicationContext,response.body().toString() ,Toast.LENGTH_LONG).show()
                                 println(response.body())
 
-                                if (response.code() == 500) {
-                                    Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
-                                }
+                            } else {
+                                Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_LONG).show()
                             }
 
                             /* val gson = GsonBuilder().create()
@@ -86,7 +90,8 @@ class Register : AppCompatActivity() {
                             //  MyPreferences.getInstance(applicationContext).saveJwt(response.body()?.token!!)
 
                             // After successful response, new intent will transition into Main page
-                            val intent = Intent(applicationContext, MainActivity::class.java)
+                            // TODO, Instead of LoginActivity, go to ValidateActivity and validate the account by going to your email and getting the token
+                            val intent = Intent(applicationContext, ValidateActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
 
@@ -98,6 +103,11 @@ class Register : AppCompatActivity() {
 
                     })
 
+        }
+        backtologin.setOnClickListener {
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 }

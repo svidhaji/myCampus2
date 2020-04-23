@@ -56,7 +56,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="20dp"
                     android:background="#fff"
-                    android:hint="Enter Email"
+                    android:hint="Enter Email:"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
@@ -66,48 +66,6 @@
             </LinearLayout>
 
         </FrameLayout>
-
-        <FrameLayout
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-
-            <ImageView
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:src="@drawable/textfield_bg"/>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:foregroundGravity="left"
-                    android:layout_margin="8dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/account_circle_24px"
-                    android:tint="@color/colorPrimary"/>
-                <EditText
-                    style="@style/Widget.AppCompat.EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:background="#fff"
-                    android:singleLine="true"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:hint="Enter Name"
-                    android:id="@+id/namefield"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName"/>
-
-            </LinearLayout>
-        </FrameLayout>
-
 
         <FrameLayout
             android:layout_margin="5dp"
@@ -142,8 +100,8 @@
                     android:singleLine="true"
                     android:textColorHint="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:hint="Enter Password"
-                    android:id="@+id/passwordfield"
+                    android:hint="Enter token:"
+                    android:id="@+id/tokenfield"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"/>
 
@@ -151,24 +109,14 @@
         </FrameLayout>
 
         <Button
-            android:id="@+id/registerbutton"
+            android:id="@+id/validatebutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:background="@drawable/card_bg"
-            android:text="Register"
-            android:textColor="@color/white"
-            android:textSize="18sp"/>
-        <Button
-            android:layout_margin="5dp"
-            android:id="@+id/backtologin"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/card_bg"
-            android:text="Back  to login"
+            android:text="Validate"
             android:textColor="@color/white"
             android:textSize="18sp"/>
 
