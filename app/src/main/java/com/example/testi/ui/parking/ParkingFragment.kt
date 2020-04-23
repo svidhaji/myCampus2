@@ -1,3 +1,4 @@
+
 package com.example.testi.ui.parking
 
 import android.os.Bundle
@@ -26,5 +27,3 @@ class ParkingFragment : Fragment() {
 
     }
 }
-
-

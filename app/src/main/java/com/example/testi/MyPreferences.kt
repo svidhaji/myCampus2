@@ -9,6 +9,7 @@ class MyPreferences (cntx : Context) {
         val PREFERENCE_NAME = "SharedPreference1"
         val PREFERENCE_LOGIN_COUNT = "LoginCount"
         val JWT = "JsonWebToken"
+        val USER = ""
         private var mInstance: MyPreferences? = null
         @Synchronized
         fun getInstance(cntx: Context): MyPreferences {
@@ -36,6 +37,10 @@ class MyPreferences (cntx : Context) {
         return preference.getString(JWT, null).toString()
     }
 
+    fun getUser () : String? {
+        return preference.getString(JWT, null).toString()
+    }
+
     fun destroyJwt () {
         val editor = preference.edit()
         editor.putString(JWT, null)
@@ -51,6 +56,12 @@ class MyPreferences (cntx : Context) {
     fun saveJwt(token:String) {
         val editor = preference.edit()
         editor.putString(JWT,token)
+        editor.apply()
+    }
+
+    fun saveUser(email:String) {
+        val editor = preference.edit()
+        editor.putString(USER,email)
         editor.apply()
     }
 

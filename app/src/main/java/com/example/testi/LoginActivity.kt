@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.testi.model.ApiClient
 import com.example.testi.model.LoginResponse
 import com.example.testi.model.UserLogin
+import com.example.testi.ui.parking.ParkingFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,6 +39,8 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
         actionBar?.hide()
+
+        val myPreference = MyPreferences(this)
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         val fabtext = findViewById<TextView>(R.id.fabtext)
@@ -93,6 +96,9 @@ class LoginActivity : AppCompatActivity() {
                                 "Logged in successfully!",
                                 Toast.LENGTH_LONG
                             ).show()
+
+                            myPreference.saveUser(email)
+
                             println(response.body()?.token)
                             MyPreferences.getInstance(applicationContext)
                                 .saveJwt(response.body()?.token!!)
