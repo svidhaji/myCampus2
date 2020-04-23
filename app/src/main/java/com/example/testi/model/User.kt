@@ -10,3 +10,5 @@ data class UserReg (
     val name: String,
     val password: String
 )
+
+data class UserEmail (val email: String)

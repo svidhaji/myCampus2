@@ -2,26 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:padding="20dp"
-    android:animateLayoutChanges="true">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_help_outline_24px"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:backgroundTint="@color/colorPrimary"
-        app:rippleColor="@color/white"
-        app:borderWidth="0dp"/>
+    android:padding="20dp">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
@@ -34,7 +20,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:layout_weight="1"
             android:src="@drawable/logo_mycampus" />
 
@@ -65,14 +51,13 @@
                     android:tint="@color/colorPrimary" />
 
                 <EditText
+                    android:layout_gravity="center"
+                    android:background="#fff"
                     android:id="@+id/emailfield"
                     style="@style/Widget.AppCompat.EditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:background="#fff"
-                    android:hint="Enter Email"
+                    android:hint="Enter your e-mail"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
@@ -101,82 +86,35 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    android:foregroundGravity="left"
-                    android:src="@drawable/key_24px"
-                    android:tint="@color/colorPrimary" />
-
-                <EditText
-                    android:id="@+id/passwordfield"
-                    style="@style/Widget.AppCompat.EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:background="#fff"
-                    android:hint="Enter Password"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="18sp" />
 
             </LinearLayout>
         </FrameLayout>
 
         <Button
-            android:id="@+id/loginbutton"
+            android:id="@+id/resetbutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:background="@drawable/card_bg"
-            android:text="Login"
+            android:text="Reset "
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/backL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/card_bg"
+            android:text="Back to login"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/registerbutton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/card_bg"
-            android:text="Register"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/forgotbutton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/card_bg"
-            android:text="Forgot Password"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/fabtext"
-        android:padding="40dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/textfield_bg"
-        android:text="This Application provides real time information of restaurant-queue wait times and parking disposition to Nokia employees. Please login with Nokia email and double tap navigationbar elements to update to real time information."
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

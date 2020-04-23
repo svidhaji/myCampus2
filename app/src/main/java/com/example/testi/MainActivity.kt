@@ -84,8 +84,6 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.replace(R.id.hoster_frag, fragmentparking)
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
-
-            fetchParkingData().execute(parkingURLS)
         }
         toRestaurant.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
