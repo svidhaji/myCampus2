@@ -24,8 +24,9 @@
         android:layout_margin="10dp">
 
         <Button
+            android:elevation="0dp"
             android:id="@+id/navigation_parking"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:padding="5dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -34,11 +35,12 @@
             android:drawableTop="@drawable/ic_local_parking_24px"
             android:drawableTint="@color/white"
             android:text="@string/title_parking"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/navigation_restaurant"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:padding="5dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -47,11 +49,12 @@
             android:drawableTop="@drawable/restaurant_24px"
             android:drawableTint="@color/white"
             android:text="@string/title_restaurant"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/navigation_settings"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:padding="5dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -60,7 +63,8 @@
             android:drawableTop="@drawable/settings_24px"
             android:drawableTint="@color/white"
             android:text="@string/title_settings"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="10dp" />
 
 
     </LinearLayout>
