@@ -390,10 +390,16 @@ class MainActivity : AppCompatActivity() {
                         1 -> {
 
                             findViewById<ProgressBar>(R.id.p10progress).setProgress(
-                                percent.toInt(),
+                                (percent.toInt() / 2),
                                 true
                             )
-                            findViewById<TextView>(R.id.p10textprogress).text = "$percent%"
+                            findViewById<TextView>(R.id.p10textprogress).text = "${percent.toInt() / 2}%"
+
+                            findViewById<ProgressBar>(R.id.p10electricprogress).setProgress(
+                                (percent.toInt() / 2),
+                                true
+                            )
+                            findViewById<TextView>(R.id.p10electrictextprogress).text = "${percent.toInt() / 2}%"
                         }
                         2 -> {
 
