@@ -8,4 +8,5 @@
     <string name="parking_p5">Parking P5 usage</string>
     <string name="parking_p10_inside">P10 - Inside usage</string>
     <string name="restaurant_usage">Restaurant Usage</string>
+    <string name="p10_electric_usage">P10 - Electric Usage</string>
 </resources>

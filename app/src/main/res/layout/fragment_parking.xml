@@ -8,6 +8,56 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:layout_weight="1"
+        android:id="@+id/p5layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg"
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/parking_p5"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ProgressBar
+                android:id="@+id/p5progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:progress="0"
+                android:background="@drawable/circlebackground"
+                android:progressDrawable="@drawable/circle"
+                android:rotation="90"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/p5textprogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/p10layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,10 +69,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:gravity="center_horizontal"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="5dp"
 
             android:text="@string/parking_p10"
             android:textColor="@color/white"
@@ -31,14 +80,13 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp">
+            android:layout_gravity="center">
 
             <ProgressBar
                 android:id="@+id/p10progress"
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:background="@drawable/circlebackground"
                 android:progress="0"
@@ -60,58 +108,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_weight="1"
-        android:id="@+id/p5layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/card_bg"
-        android:clipToPadding="true"
-        android:orientation="vertical"
-        >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/parking_p5"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp">
-
-            <ProgressBar
-                android:id="@+id/p5progress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:progress="0"
-                android:background="@drawable/circlebackground"
-                android:progressDrawable="@drawable/circle"
-                android:rotation="90"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/p5textprogress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text=""
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
-        </FrameLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_weight="1"
@@ -127,10 +124,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:gravity="center_horizontal"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="5dp"
             android:text="@string/parking_p10_inside"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -138,14 +134,13 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp">
+            android:layout_gravity="center">
 
             <ProgressBar
                 android:id="@+id/p10insideprogress"
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:progress="0"
                 android:background="@drawable/circlebackground"
@@ -156,6 +151,60 @@
 
             <TextView
                 android:id="@+id/p10insidetextprogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:id="@+id/p10electriclayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/card_bg"
+        android:backgroundTint="@color/green"
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/p10_electric_usage"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ProgressBar
+                android:id="@+id/p10electricprogress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:progress="0"
+                android:background="@drawable/circlebackground"
+                android:backgroundTint="@color/darkGreen"
+                android:progressDrawable="@drawable/circle"
+                android:rotation="90"
+                android:textAlignment="center" />
+
+
+            <TextView
+                android:id="@+id/p10electrictextprogress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
