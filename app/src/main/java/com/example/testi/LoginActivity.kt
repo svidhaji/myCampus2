@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
                 ".{4,}" +  //at least 4 characters
                 "$"
     )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -93,10 +92,12 @@ class LoginActivity : AppCompatActivity() {
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
-                        if (response.isSuccessful) {
+                        val userN = response.body()?.username.toString()
+                        val err = response.message()
+                        if (response.code() == 200) {
                             Toast.makeText(
                                 applicationContext,
-                                "Logged in successfully!",
+                                "Welcome  $userN",
                                 Toast.LENGTH_LONG
                             ).show()
 
@@ -116,8 +117,7 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(intent)
                         } else {
                             Toast.makeText(
-                                applicationContext,
-                                "Wrong username or password..",
+                                applicationContext, "Invalid email or password..   $err",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -125,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, t.localizedMessage, Toast.LENGTH_LONG).show()
                     }
 
                 })

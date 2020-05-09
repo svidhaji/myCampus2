@@ -50,13 +50,13 @@ class ValidateActivity : AppCompatActivity() {
                 .enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                         Log.d("REGISTER", "${response.body()} responsecode: ${response.code()}")
-                        if (response.isSuccessful) {
+                        if (response.code() == 200) {
                             MyPreferences.getInstance(applicationContext).saveJwt(response.body()?.token!!)
-                            Toast.makeText(applicationContext,response.body().toString() ,Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext,"Welcome to myCampus: ${response.body()?.username}!",Toast.LENGTH_LONG).show()
                             println(response.body())
 
                         } else {
-                            Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
                         }
 
                         /* val gson = GsonBuilder().create()
